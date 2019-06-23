@@ -1,0 +1,43 @@
+// Bisection Method
+// Program created by Panas Bhattarai. June 09, 2019.
+
+#include<stdio.h>
+#include<conio.h>
+#include<math.h>
+
+float func(float x)                          // Defining function
+{
+	float fx = x*x-2;
+	return fx;
+}
+
+int main()
+{
+	float xa=1.1, xb=1.9;               /* Initializing boundary values*/
+	float fxa;
+	fxa = func(xa);
+	float fxb;
+	fxb = func(xb);
+	float xm;
+	float fxm;
+	int cnt=0;
+	do{
+		xm = ((xa+xb)/2);
+		fxm = func(xm);
+		++cnt;
+		printf("\nIteration  %d",cnt);
+		printf("\nxa = %f \t xb =%f \t xm = %f \t fxm = %f",xa,xb,xm,fxm);
+		if ( ( fxm * fxa )<0)
+		{
+			xb = xm;
+		}
+		else
+		{
+			xa = xm;
+		}
+	}while ( (xb-xa)>=pow(10,-3));
+	getch();
+	return 0;
+}
+
+	

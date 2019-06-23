@@ -1,0 +1,45 @@
+// Program to solve x^2-2=0 using Regula-Falsi method.
+// Creaeted by Panas Bhattarai. June 10, 2019
+
+#include <stdio.h>
+#include <conio.h>
+#include <math.h>
+
+float f( float x )
+{
+float fx = x*x-2;
+return fx;
+}
+
+int main()
+{
+	float xa, xb, xm, fxa, fxb, fxm;
+	int count=0;
+	rep:
+	printf("Enter boundary values:\n");
+	scanf("%f%f",&xa,&xb);
+	if ( f(xa)*f(xb)>0)
+	{
+		printf("Invalid guess!");
+		goto rep;
+	}
+	do{
+		xm = ( xa*f(xb)-xb*f(xa))/(f(xb)-f(xa));
+		fxa = f(xa);
+		fxb = f(xb);
+		fxm = f(xm);
+		printf("\n Iteration number: %d",++count);
+		printf("\n xa = %f\t xb = %f\t xm = %f\t fxm = %f",xa,xb,xm,fxm);
+		if ( fxa*fxm > 0 )
+		{
+			xa=xm;
+		}
+		else
+		{
+			xb=xm;
+		}
+	}while ( fabs(xb-xa)>=0.01 );
+	getch();
+	return 0;
+}
+		

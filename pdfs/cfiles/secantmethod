@@ -1,0 +1,36 @@
+// A program to solve x^2-2=0 using secant method. 
+// Created by Pnas Bhattarai. June 10, 2019
+
+#include <stdio.h>
+#include <conio.h>
+#include <math.h>
+
+float f( float x )
+{
+float fx = x*x-2;
+return fx;
+}
+
+int main()
+{
+	float xa, xb, fxa, fxb, xm, fxm;
+	int counter=0;
+	printf("Enter two initial guess:\n");
+	scanf("%f%f",&xa,&xb);
+	do{
+		fxb = f(xb);
+		fxa = f(xa);
+		xm = ( xa*fxb-xb*fxa )/( fxb - fxa );
+		fxm = f( xm );
+		printf("\nIteration: %d",++counter);
+		printf("\n xa = %f\t xb = %f\t xm = %f\t fxm = %f",xa,xb,xm,fxm);
+		xa=xb;
+		xb=xm;
+	}while ( fabs(xb-xa)>0.0001 );
+	getch();
+	return 0;
+}
+
+		
+		
+	

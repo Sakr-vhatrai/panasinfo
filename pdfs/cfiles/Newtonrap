@@ -1,0 +1,38 @@
+// A program to solve x^2-2=0 using Newton-Rhapson method.
+// Created by Panas Bhattarai June 10, 2019
+
+#include <stdio.h>
+#include <conio.h>
+#include <math.h>
+
+double f( double x )                      // Defining function
+{
+double fx = x*x-2;
+return fx;
+}
+
+double fd( double x )           		// Defining function derivative
+{
+	double fd = 2*x;
+	return fd;
+}
+
+int main()
+{
+	double xa, xm,temp;
+	int counter=0;
+	printf("Enter inital guess:\n");
+	scanf("%lf",&xa);
+	do{
+		xm = xa-(f(xa)/fd(xa));
+		printf("\nIteration: %d",++counter);
+		printf("\n xa = %lf\t xm = %lf", xa, xm);
+		temp = xa;
+		xa = xm;
+		
+	}while (fabs(xa-temp)>=0.001);                       // Fabs==absolute value of (int,float,long..)
+	getch();
+	return 0;
+}
+
+	

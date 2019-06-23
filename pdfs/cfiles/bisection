@@ -1,0 +1,43 @@
+// Solving x^3-3x-4 using method of bisection.
+// Created by Panas Bhattarai. June 09, 2019
+
+#include <stdio.h>
+#include <conio.h>
+#include <math.h>
+
+float func(float x)                                  // Defining function
+{
+	float fx = pow(x,3)-3*x-4;
+	return fx;
+}
+
+int main()
+
+{
+	float xa = 1, xb = 3;
+	float fxa = func( xa );
+	float fxb = func( xb );
+	float xm, fxm, err;
+	int cnt=0;
+	printf("Enter error range: ");
+	scanf("%f",&err);
+	do{
+		++cnt;
+	printf("\nIteration: %d",cnt);
+	xm = (xa+xb)/2;
+	fxm = func( xm );
+	printf("\n xa = %f \t xb = %f \t xm = %f \t fxm = %f",xa,xb,xm,fxm);
+	if ( fxm*fxa < 0 )
+	{
+		xb=xm;
+	}
+	else
+	{
+		xa=xm;
+	}
+    }while ( xb-xa >= err);
+    printf("\nThe approximate value is %f after %d iterations.",xm,cnt);
+    getch();
+    return 0;
+}
+	 
